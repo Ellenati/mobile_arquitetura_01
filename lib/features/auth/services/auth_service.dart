@@ -19,8 +19,8 @@ class AuthService {
     if (response.statusCode == 200) {
       return UserModel.fromJson(data);
     } else {
-      // Extrai a mensagem de erro retornada pela DummyJSON (ex: "Invalid credentials")
-      final String errorMessage = data['message'] ?? 'Erro desconhecido ao realizar login';
+      final String errorMessage =
+          data['message'] ?? 'Erro desconhecido ao realizar login';
       throw Exception(errorMessage);
     }
   }

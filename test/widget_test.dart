@@ -1,30 +1,43 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:product_app/main.dart';
+import 'package:product_app/main_app.dart';
+import 'package:product_app/features/auth/controllers/auth_controller.dart';
+import 'package:product_app/features/auth/repositories/auth_repository.dart';
+import 'package:product_app/features/auth/services/auth_service.dart';
+import 'package:product_app/features/auth/services/session_service.dart';
+import 'package:product_app/features/products/controllers/product_controller.dart';
+import 'package:product_app/features/products/controllers/product_details_controller.dart';
+import 'package:product_app/features/products/repositories/product_repository.dart';
+import 'package:product_app/features/products/services/product_cache_service.dart';
+import 'package:product_app/features/products/services/product_service.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('App renders login page test', (WidgetTester tester) async {
+    final sessionService = SessionService();
+    final authService = AuthService();
+    final authRepository = AuthRepository(authService, sessionService);
+    final authController = AuthController(authRepository);
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    final productService = ProductService();
+    final productCacheService = ProductCacheService();
+    final productRepository = ProductRepository(
+      productService,
+      productCacheService,
+    );
+    final productController = ProductController(productRepository);
+    final productDetailsController = ProductDetailsController(
+      productRepository,
+      productController,
+    );
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    await tester.pumpWidget(
+      MainApp(
+        authController: authController,
+        productController: productController,
+        detailsController: productDetailsController,
+      ),
+    );
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.text('Login'), findsOneWidget);
+    expect(find.text('ENTRAR'), findsOneWidget);
   });
 }

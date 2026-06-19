@@ -1,16 +1,28 @@
-# product_app
+# Lojinha Virtual Mobile
 
-A new Flutter project.
+Aplicativo Flutter de e-commerce desenvolvido para a disciplina de Desenvolvimento para Dispositivos Móveis. O projeto utiliza Clean Architecture, gerenciamento de estado reativo nativo (ValueNotifier) e integração REST com a API DummyJSON.
 
-## Getting Started
+## Como Executar
 
-This project is a starting point for a Flutter application.
+Pré-requisitos: Flutter SDK 3.9+ (Canal Stable) e Dart 3+.
 
-A few resources to get you started if this is your first Flutter project:
+No terminal, na raiz do projeto, execute os seguintes comandos sequencialmente:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```bash
+# 1. Baixar as dependencias do projeto
+flutter pub get
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# 2. Garantir a injecao do pacote de rede HTTP
+flutter pub add http
+
+# 3. Rodar o aplicativo 
+flutter run
+
+## Usuários de Teste (DummyJSON)
+
+Use as credenciais abaixo para fazer login e testar o aplicativo. Todos são usuários reais da API DummyJSON.
+
+| # | Username | Password | Nome Completo |
+|---|----------|----------|---------------|
+| 1 | `emilys` | `emilyspass` | Emily Sanchez |
+| 2 | `johnd` | `johndpass` | John Doe |

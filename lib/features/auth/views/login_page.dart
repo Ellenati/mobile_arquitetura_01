@@ -23,8 +23,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-  final _usernameController = TextEditingController(text: 'emilys');
-  final _passwordController = TextEditingController(text: 'emilyspass');
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   void initState() {
@@ -96,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return "Informe o usuário (ex: emilys)";
+                      return "Informe o usuário";
                     }
                     return null;
                   },
@@ -112,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return "Informe a senha (ex: emilyspass)";
+                      return "Informe a senha";
                     }
                     return null;
                   },
@@ -129,7 +129,10 @@ class _LoginPageState extends State<LoginPage> {
                       height: 50,
                       child: ElevatedButton(
                         onPressed: _login,
-                        child: const Text("ENTRAR", style: TextStyle(fontSize: 16)),
+                        child: const Text(
+                          "ENTRAR",
+                          style: TextStyle(fontSize: 16),
+                        ),
                       ),
                     );
                   },

@@ -8,7 +8,8 @@ class ProductLoading extends ProductState {}
 
 class ProductSuccess extends ProductState {
   final List<ProductModel> products;
-  ProductSuccess(this.products);
+  final Set<int> favoriteIds;
+  ProductSuccess(this.products, {this.favoriteIds = const {}});
 }
 
 class ProductError extends ProductState {

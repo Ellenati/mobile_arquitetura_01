@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:product_app/domain/entities/product.dart';
 import 'package:product_app/presentation/viewmodels/product_viewmodel.dart';
 
